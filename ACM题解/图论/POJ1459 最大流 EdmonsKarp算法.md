@@ -1,0 +1,334 @@
+# 题目内容
+
+链接： [POJ1459.题目](https://vjudge.net/problem/POJ-1459)
+
+# 算法详解
+
+
+
+# 题解
+
+本题就是EdmonsKarp算法的实现，唯一的难点在于多个发电站（有容量）和多个消费者（有用电需求）的处理。
+
+我们的解决方法是：
+
+1. 设置一个超级发电站（记为SUPER_S），我们把每个发电站和SUPER_S连接起来，连接起来的边的容量就是发电站的最大发电量，这就解决了多个发电站的问题。
+2. 同样的，我们可以设置一个超级消费者（记为SUPER_C），我们把每个消费者和SUPER_C连接起来，消费者的用电需求就是消费者和SUPER_C边的容量。
+
+# 编码注意点
+
+本题使用vector\<Edge\> 实现的话会存在TLE的问题，用二维矩阵存取图结构能AC。所以建议在ACM比赛中除非空间复杂度太高，尽量使用二维矩阵存取图结构。
+
+## 核心代码
+
+本题增广路算法核心代码如下，用了一些小技巧。
+
+```C++
+// EdmondsKarp算法 
+int maxElectry(){
+	int sum = 0;
+	while(1){
+		// 从SUPER_S起点开始，标准操作 
+		queue<int> Q;
+		memset(in,0,sizeof(int)*maxn);
+		in[SUPER_S] = INF;
+		Q.push(SUPER_S);
+		// BFS循环 
+		while(!Q.empty()){
+			// 日常标准操作_(:з」∠)_ 
+			int now = Q.front();
+			Q.pop();
+			int len = G[now].size();
+			// 遍历该点所有出去的边 
+			for(int i = 0;i < len;i++){
+				int to = G[now][i];
+				// 重要！ 
+				// 如果可以增加流量,并且没有访问过
+				// 这里in数组一举两用，既可以表示该点的流入量，也可以表示是否访问过。 
+				if(capMap[now][to] > 0 && !in[to]){
+					// 重要！ 
+					// to的流入量为当前剩余容量和上一个流入量的最小值 
+					in[to] = min(in[now],capMap[now][to]);
+					// 重要！
+					// to的上一个点是now，用于记录路线 
+					p[to] = now;
+					Q.push(to);
+				}
+			}
+			// BFS到达终点，结束循环 
+			if(in[SUPER_C])	break;
+		} 
+		
+		// 如果终点没有流量流入，说明没有增广路，结束 
+		if(!in[SUPER_C]) break;
+		// 根据p数组记录的数据，返回起点 
+		for(int u = SUPER_C;u != SUPER_S;u = p[u]){
+			// 重要！
+			// 根据最大流的定理，flow(u,v) = -flow(v,u)
+			// 所以一个+ 一个- 
+			capMap[p[u]][u] -= in[SUPER_C];
+			capMap[u][p[u]] += in[SUPER_C];
+		}
+		// 总电量增加该增广路的流量 
+		sum += in[SUPER_C];
+		// 寻找下一条增广路 
+	}
+	return sum;
+}
+```
+
+总结一些常见的编码方法：
+
+### p数组存储BFS路径的方法
+
+两个重点，一个记录路径的方法，一个回溯路径的方法。
+
+```C++
+// 1.记录方法
+p[to] = now;
+
+// 2.回溯方法
+for(int u = SUPER_C;u != SUPER_S;u = p[u]){
+
+}
+```
+
+# 源代码
+
+## TLE版本
+
+```c++
+#include<iostream>
+#include<cstdio>
+#include<cstring>
+#include<queue>
+#include<cmath>
+#include<vector>
+#include<string>
+
+// How to do? make all source nodes the one source node
+using namespace std;
+
+//macros
+#define maxn 120
+#define SUPER_STATION 105
+#define SUPER_CONSUMER 110
+#define SUPER_S SUPER_STATION
+#define SUPER_C SUPER_CONSUMER
+#define INF 99999999
+
+// n -> nodes
+// np -> power stations
+// nc -> consumers
+// m -> edge num
+int n,np,nc,m;
+
+// the definition of graph
+struct Edge{
+	int from,to,cap,flow;
+	Edge(int _from,int _to,int _cap):from(_from),to(_to),cap(_cap){
+		flow = 0;
+	}
+};
+vector<Edge> edges;		// store the edge
+vector<int> G[maxn];	// edges NO out in a node
+int in[maxn];	// supply of a node
+int p[maxn];	// record the last edge we move
+
+void addEdge(int from,int to,int value){
+	edges.push_back(Edge(from,to,value));
+	edges.push_back(Edge(to,from,0));
+	int s = edges.size(); 
+	G[from].push_back(s-2);
+	G[to].push_back(s-1);
+}
+
+// EdmondsKarp
+int maxElectry(){
+	int sum = 0;
+	while(1){
+		// start from SUPER_S
+		queue<int> Q;
+		memset(in,0,sizeof(int)*maxn);
+		in[SUPER_S] = INF;
+		Q.push(SUPER_S);
+		while(!Q.empty()){
+			int now = Q.front();
+			Q.pop();
+			int len = G[now].size();
+			// get a way out
+			for(int i = 0;i < len;i++){
+				Edge edge = edges[G[now][i]];
+				// have not visited yet
+				if(edge.cap > edge.flow && !in[edge.to]){
+					in[edge.to] = min(in[now],edge.cap - edge.flow);
+					p[edge.to] = G[now][i];
+					Q.push(edge.to);
+				}
+				
+			}
+			if(in[SUPER_C])	break;
+		} 
+		
+		// nothing more to send
+		if(!in[SUPER_C]) break;
+		// the path
+		for(int u = SUPER_C;u != SUPER_S;u = edges[p[u]].from){
+			edges[p[u]].flow += in[SUPER_C];
+			edges[p[u]^1].flow -= in[SUPER_C];
+		}
+		sum += in[SUPER_C];
+	}
+	return sum;
+}
+
+int main(){
+	// input of scanf
+	int first,next,value;
+	// the use of scanf
+	while(scanf("%d%d%d%d",&n,&np,&nc,&m)!=EOF){
+		// empty graph
+		edges.clear();
+		for(int i = 0;i < n;i++){
+			G[i].clear();
+		}
+		// m edges
+		for(int i = 0;i < m;i++){
+			while(getchar()!='(');
+			scanf("%d,%d)%d", &first, &next, &value);
+			addEdge(first,next,value);
+		}
+		// np nodes
+		for(int i = 0;i < np;i++){
+			while(getchar()!='(');
+			scanf("%d)%d", &first, &value);
+			addEdge(SUPER_S,first,value);
+		}
+		// nc nodes
+		for(int i = 0;i < nc;i++){
+			while(getchar()!='(');
+			scanf("%d)%d", &first, &value);
+			addEdge(first,SUPER_C,value);
+		}
+		printf("%d\n",maxElectry());
+	}
+	
+	return 0;
+} 
+```
+
+## AC版本
+
+```C++
+#include<iostream>
+#include<cstdio>
+#include<cstring>
+#include<queue>
+#include<cmath>
+#include<vector>
+#include<string>
+
+// How to do? make all source nodes the one source node
+using namespace std;
+
+//macros
+#define maxn 120
+#define SUPER_STATION 105
+#define SUPER_CONSUMER 110
+#define SUPER_S SUPER_STATION
+#define SUPER_C SUPER_CONSUMER
+#define INF 99999999
+
+// n -> nodes
+// np -> power stations
+// nc -> consumers
+// m -> edge num
+int n,np,nc,m;
+
+// the definition of graph
+int capMap[maxn][maxn];
+vector<int> G[maxn];
+int in[maxn];	// supply of a node
+int p[maxn];	// record the last node we move
+
+void addEdge(int from,int to,int value){
+	capMap[from][to] = value;
+	G[from].push_back(to);
+}
+
+// EdmondsKarp
+int maxElectry(){
+	int sum = 0;
+	while(1){
+		// start from SUPER_S
+		queue<int> Q;
+		memset(in,0,sizeof(int)*maxn);
+		in[SUPER_S] = INF;
+		Q.push(SUPER_S);
+		while(!Q.empty()){
+			int now = Q.front();
+			Q.pop();
+			int len = G[now].size();
+			// get a way out
+			for(int i = 0;i < len;i++){
+				int to = G[now][i];
+				// have not visited yet
+				if(capMap[now][to] > 0 && !in[to]){
+					in[to] = min(in[now],capMap[now][to]);
+					p[to] = now;
+					Q.push(to);
+				}
+				
+			}
+			if(in[SUPER_C])	break;
+		} 
+		
+		// nothing more to send
+		if(!in[SUPER_C]) break;
+		// the path
+		for(int u = SUPER_C;u != SUPER_S;u = p[u]){
+			capMap[p[u]][u] -= in[SUPER_C];
+			capMap[u][p[u]] += in[SUPER_C];
+		}
+		sum += in[SUPER_C];
+	}
+	return sum;
+}
+
+int main(){
+	// input of scanf
+	int first,next,value;
+	// the use of scanf
+	while(scanf("%d%d%d%d",&n,&np,&nc,&m)!=EOF){
+		// empty graph
+		for(int i = 0;i < maxn;i++){
+			G[i].clear();
+			for(int j = 0;j < maxn;j++){
+				capMap[i][j] = 0;
+			}
+		}
+		// m edges
+		for(int i = 0;i < m;i++){
+			while(getchar()!='(');
+			scanf("%d,%d)%d", &first, &next, &value);
+			addEdge(first,next,value);
+		}
+		// np nodes
+		for(int i = 0;i < np;i++){
+			while(getchar()!='(');
+			scanf("%d)%d", &first, &value);
+			addEdge(SUPER_S,first,value);
+		}
+		// nc nodes
+		for(int i = 0;i < nc;i++){
+			while(getchar()!='(');
+			scanf("%d)%d", &first, &value);
+			addEdge(first,SUPER_C,value);
+		}
+		printf("%d\n",maxElectry());
+	}
+	
+	return 0;
+} 
+```
+
