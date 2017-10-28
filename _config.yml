@@ -83,19 +83,5 @@ pagination_dir: page
 
 ## Themes laughing: https://github.com/BoizZ/hexo-theme-laughing
 ## config of hexo-theme-laughing:
-theme: hexo-theme-laughing
-## Keywords for SEO
-# keywords: 毛怡伟,毛线
-# ## 页面背景
-# page_background: /assets/fantasy.jpg
-# post_background: /assets/cats.jpg
-# # 作者头像
-# # author:
-# #   name: 玩毛线的毛线
-# #   head: /assets/woolen.jpg
-# #   signature: 做有情怀的程序员
-# # 社交账号
-# social:
-#   name: GitHub
-#   icon: github
-#   link: https://github.com/sanmaopep
+theme: laughing
+
