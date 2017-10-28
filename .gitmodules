@@ -1,0 +1,3 @@
+[submodule "themes/hexo-theme-woolen"]
+	path = themes/hexo-theme-woolen
+	url = https://github.com/sanmaopep/hexo-theme-woolen.git
