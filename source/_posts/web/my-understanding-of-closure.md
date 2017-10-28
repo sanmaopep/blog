@@ -1,0 +1,116 @@
+---
+title: 我理解的闭包
+date: 2017-10-26
+---
+
+闭包是前端开发中的一个重要概念，也是前端面试的必问问题之一。对于JavaScript初学者而言，闭包学习JavaScript的一大障碍。网上有很多闭包的教程，形象地告诉了我闭包长什么样。但是大部分教程没有对闭包的定义给出精准的表达，也没有对闭包背后的一些原理和逻辑进行解释。本文通过整合网上各路资料，对闭包前前后后的知识点进行梳理，希望可以帮助大家准确并且深刻理解闭包的概念。（本文假设大家对闭包有一定的理解）
+
+## Scope
+
+要理解闭包，先要理解一个重要概念—作用域。
+
+> In computer programming, the scope of a name **binding** – an association of a **name** to an **entity**, such as a variable – is the **region** of a computer program **where the binding is valid**: where the name can be used to refer to the entity. 
+>
+> Such a region referred to as is  a **scope block**.
+>
+> 参考自[wiki百科 Scope (computer science)](https://en.wikipedia.org/wiki/Scope_(computer_science)#Lexical_scoping)
+
+scope又可以分为词法作用域（Lexical scope）和动态作用域(Dynamic scope)。两者区别与对**区域**这个概念的解读。Wiki百科对两者的解释如下：
+
+> In languages with lexical scope (also called static scope), name resolution depends on the location in the source code and the **lexical context**, which is defined by where the named variable or function is defined. In contrast, in languages with dynamic scope the name resolution depends upon the program state when the name is encountered which is determined by the **execution context** or calling context. 
+>
+> 参考自[wiki百科 Scope (computer science)](https://en.wikipedia.org/wiki/Scope_(computer_science)#Lexical_scoping)
+
+在词法作用域中，一个name是否有效取决于它在源代码中的位置，也就是词法上下文。而动态作用域要相对复杂一点，在动态作用域中，一个name是否有效取决于这个程序的运行时状态，也就是运行时上下文。
+
+对词法作用域在JavaScript中的表现在本文不作阐述，具体参考这篇博文：[深入理解javascript原型和闭包（12）——简介【作用域】](http://www.cnblogs.com/wangfupeng1988/p/3991151.html)
+
+## 对Closure的一些定义
+
+> 各种专业文献上的"闭包"（closure）定义非常抽象，很难看懂。我的理解是，闭包就是能够读取其他函数内部变量的函数。
+>
+> 参考自[阮一峰 学习Javascript闭包（Closure）](http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html)
+
+> A *closure* is the combination of a function and the lexical environment within which that function was declared.
+>
+> 参考自[MDN Closure](https://link.zhihu.com/?target=https%3A//developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
+
+MDN的定义指出了闭包需要的东西：**闭包 = 函数 + 函数定义的词法上下文环境**。阮一峰老师的定义指出了闭包产生的现象：一个函数能够**读取其他函数内部变量**。
+
+> In programming languages, closures (also lexical closures or function closures) are techniques for implementing lexically scoped name binding in languages with first-class functions. 
+>
+> 参考自[wiki百科 Closure(computer programming)](https://en.wikipedia.org/wiki/Closure_(computer_programming))
+
+wiki百科上的定义指出了闭包需要的语言条件： *first-class functions*。关于这个知识点可以参考[“函数是一等公民”背后的含义](http://blog.leapoahead.com/2015/09/19/function-as-first-class-citizen/)。另外，定义中提到的*implementing lexically scoped name binding* ，即基于词法作用域的name绑定与scope中的binding概念相互照应。本质上就是说的就是词法作用域与变量有效性的关系。
+
+> 在JavaScript中，实现外部作用域访问内部作用域中变量的方法叫做闭包。
+>
+> 参考自《深入浅出Node.js》
+
+以上对闭包的定义都略有差别，有的将闭包定义为函数，有的将闭包定义为方法，也有将闭包定义为组合。我觉得将闭包理解为一个方法，或者某个东西都对。两种定义的方法都对我们理解闭包有帮助。
+
+## JavaScript的闭包
+
+我们都会遇到在一个外部函数套着一个内部函数的情况，比如说：
+
+```javascript
+function foo(x) {
+    var tmp = 3;
+    function b(y) {
+        alert(x + y + (++tmp));
+    }
+  	b(2);
+  	b(3);
+}
+foo(0);
+```
+
+在foo函数结束的时候，tmp就会被销毁。一般来说，当内部函数被return的时候，外部就可以引用内部的函数，闭包就会通过return而产生。如：
+
+```javascript
+function foo(x) {
+    var tmp = 3;
+    return function (y) {
+        alert(x + y + (++tmp));
+    }
+}
+var bar = foo(2); // bar 现在是一个闭包
+bar(10);
+```
+
+按照我们原本的理解，在没有闭包的情况下，foo函数执行完，它内部的tmp变量就会被销毁，但是因为外部函数引用了内部的变量产生了闭包，内部函数的词法上下文没有被销毁，tmp变量也没有被销毁。
+
+当然，也有不用闭包的return的例子，比如利用setInterval或者绑定一个事件等等方法：
+
+```javascript
+function a(){
+  var temp = 0;// let也可以
+  function b(){
+    console.log(temp++);
+  }
+  // setInterval可以产生闭包
+  setInterval(b,1000);
+  // 绑定可以产生闭包
+  window.addEventListener('click',b);
+  // ajax传入callback可以产生闭包
+  ajax(b);
+  // 或者直接把这个函数传给window或者其它函数外部的元素
+  window.closure = b;
+}
+a();
+```
+
+可以看到，只要内部函数有机会在函数外部被调用，或者说**内部函数被外部的某个变量引用**，就会产生闭包。就像《深入浅出Node.js》中提到的那样：
+
+> 闭包是JavaScript中的高级特性，利用它可以产生很多巧妙的效果。它的问题在于，一旦有变量**引用**了这个中间函数，这个中间函数不会释放，同时也使得原始作用域不会得到释放。作用域中产生的内存占用也不会被释放。除非不再有引用，才会逐步释放。
+>
+> 参考自 《深入浅出Node.js》
+
+## 参考资料
+
+[动态作用域和词法域的区别是什么？](https://www.zhihu.com/question/20032419)
+[“函数是一等公民”背后的含义](http://blog.leapoahead.com/2015/09/19/function-as-first-class-citizen/)
+[js闭包的概念作用域内存模型](http://www.cnblogs.com/walter-white/p/4981151.html)
+[阮一峰 学习Javascript闭包（Closure）](http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html)
+[javascript基础拾遗——词法作用域](http://www.cnblogs.com/Quains/archive/2011/04/12/2013121.html)
+[深入理解javascript原型和闭包（12）——简介【作用域】](http://www.cnblogs.com/wangfupeng1988/p/3991151.html)
