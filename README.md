@@ -15,6 +15,10 @@ hexo deploy
 ```
 You can see my blogs in https://github.com/sanmaopep/blog/tree/master/source/_posts or in my github pages: <https://sanmaopep.github.io/>
 
+### Resume_design
+
+我将aboutme页面的设计与源代码放在了Resume_design目录下，可以方便自己自由设计个人CV页面
+
 ### Notice:
 
 1.由于使用pandoc代替原模板渲染（为了mathjax），因此需要在系统安装pandoc：
