@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 玩毛线的毛线
+title: 陆幽轩
 subtitle: 
 description:
 author: 玩毛线的毛线
@@ -77,11 +77,24 @@ pagination_dir: page
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
+
+
 ## Themes: https://hexo.io/themes/
 ## theme: landscape
 
 
-## Themes laughing: https://github.com/BoizZ/hexo-theme-laughing
-## config of hexo-theme-laughing:
-theme: laughing
+## Famous Themes Next
+## http://theme-next.iissnan.com/getting-started.html#stable
+theme: next
+
+## Themes of Mine
+# theme: hexo-theme-woolen
+
+## support for mathjax
+math:
+  engine: 'mathjax' # or 'katex'
+  mathjax:
+    src: custom_mathjax_source
+    config:
+      # MathJax config
 
