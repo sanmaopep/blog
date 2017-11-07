@@ -1,6 +1,8 @@
 ---
 title: Tensorflow入门笔记
 date: 2017-05-20
+mathjax: true
+categories: 机器学习
 ---
 
 ## Tensorflow原理

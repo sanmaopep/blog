@@ -14,3 +14,12 @@ hexo generate
 hexo deploy
 ```
 You can see my blogs in https://github.com/sanmaopep/blog/tree/master/source/_posts or in my github pages: <https://sanmaopep.github.io/>
+
+### Notice:
+
+1.由于使用pandoc代替原模板渲染（为了mathjax），因此需要在系统安装pandoc：
+
+```shell
+$ sudo apt install pandoc	
+```
+

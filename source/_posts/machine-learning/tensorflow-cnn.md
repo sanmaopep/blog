@@ -1,6 +1,8 @@
 ---
 title: Tensorflow训练多层卷积神经网络
 date: 2017-05-22
+mathjax: true
+categories: 机器学习
 ---
 
 来自官方例子：[Deep MNIST for Experts](https://www.tensorflow.org/get_started/mnist/pros)

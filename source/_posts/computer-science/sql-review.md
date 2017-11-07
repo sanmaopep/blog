@@ -1,6 +1,7 @@
 ---
 title: SQL复习
 date: 2017-6-3
+categories: 计算机基础
 ---
 
 ## Basis

@@ -1,6 +1,7 @@
 ---
 title: C++重载与虚函数
 date: 2017-6-1
+categories: 计算机基础
 ---
 
 ## Overload

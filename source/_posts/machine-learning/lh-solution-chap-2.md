@@ -1,6 +1,8 @@
 ---
 title: 统计学习方法 课后习题解答（第二章）
 date: 2017-11-06
+mathjax: true
+categories: 机器学习
 ---
 
 ## 2.1
