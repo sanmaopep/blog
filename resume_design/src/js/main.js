@@ -1,6 +1,6 @@
 'use strict';
 
-import foo from './sr';
+import foo from './lib/sr';
 
 const main = () => {
     console.log(foo);

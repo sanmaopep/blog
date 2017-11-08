@@ -41,7 +41,7 @@ gulp.task('dev', ['pug', 'sass', 'js', 'dev-server'], () => {
 
     // listen the change of your file
     gulp.watch('./src/pug/**/*.pug', ['pug-watch'])
-    gulp.watch('./src/sass/**/*.scss', ['sass'])
+    gulp.watch('./src/css/**/*.scss', ['sass'])
     gulp.watch('./src/js/**/*.js', ['js-watch'])
 
 })
@@ -54,12 +54,10 @@ gulp.task('prod', ['pug', 'sass', 'js'], () => {
  * Watch Task
  */
 gulp.task('pug-watch', ['pug'], () => {
-    console.log("因为html更新，重启服务器")
     reload();
 })
 
 gulp.task('js-watch', ['js'], () => {
-    console.log("因为js更新，重启服务器")
     reload();
 })
 

@@ -1,2 +1,45 @@
-//sass style
-//-----------------------------------
+// index style
+// ---------------------------------
+* {
+    font-family: 'NSimSun';
+}
+
+@mixin full-height($left) {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    padding: 15px;
+    @if $left {
+        left: 0;
+        right: 50%;
+    }
+    @else {
+        left: 50%;
+        right: 0;
+    }
+}
+
+@mixin index-flexbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    p {
+        text-align: center;
+    }
+}
+
+.ui-index-left {
+    @include full-height(true);
+    @include index-flexbox;
+    background: #0e0e0e;
+    color: #ffffff;
+}
+
+.ui-index-right {
+    @include full-height(false);
+    @include index-flexbox;
+    background: #f2f2f2;
+    color: #000000;
+}
