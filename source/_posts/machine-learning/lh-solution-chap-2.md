@@ -53,7 +53,7 @@ $$-w^{(1)}+w^{(2)}+b > 0\dashrightarrow(4)$$
 
 $$conv(S)=\{ x= \sum^{k}_{i=1}{\lambda_{i}x_{i}}  | \sum_{i=1}^{k}{\lambda_{i}=1},\lambda_{i}\geq0,i=1,2,...,k     \}$$
 
-**解：** 这个证明太难了(ㄒoㄒ)，最后还是参（shan）考（zhai）了大神的解法。[凸包与线性可分](http://blog.csdn.net/y954877035/article/details/52210734)。
+**解：** 这个证明对我来说还是太难了(ㄒoㄒ)，最后还是参（shan）考（zhai）了大神的解法。[凸包与线性可分](http://blog.csdn.net/y954877035/article/details/52210734)。
 
 凸壳可以通过以下图形理解：
 

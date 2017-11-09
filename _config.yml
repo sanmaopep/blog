@@ -94,3 +94,9 @@ theme: next
 # theme: hexo-theme-woolen
 
 
+## support for local search
+search:
+  path: search.xml
+  field: post
+
+
