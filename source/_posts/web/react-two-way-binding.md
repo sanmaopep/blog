@@ -1,6 +1,7 @@
 ---
 title: React基于事件委托的双向绑定
 date: 2017-10-22
+layout: false
 categories: 前端开发
 ---
 

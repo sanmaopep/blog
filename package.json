@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "server": "hexo server",
-    "generate": "hexo generate ",
-    "deploy": "hexo deploy"
+    "deploy": "hexo clean && hexo generate && hexo deploy"
   },
   "hexo": {
     "version": "3.4.0"
