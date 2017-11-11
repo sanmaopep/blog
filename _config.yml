@@ -69,8 +69,12 @@ time_format: HH:mm:ss
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
+  ### 部署到github pages
+  # type: git
+  # repo: git@github.com:sanmaopep/sanmaopep.github.io.git
+  ### 部署到coding pages
   type: git
-  repo: git@github.com:sanmaopep/sanmaopep.github.io.git
+  repo: https://git.coding.net/sanmaopep/sanmaopep.coding.me.git
 
 # Pagination
 ## Set per_page to 0 to disable pagination
