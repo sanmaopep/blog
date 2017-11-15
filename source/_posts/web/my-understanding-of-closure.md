@@ -1,12 +1,12 @@
 ---
-title: 闭包闲扯
+title: 闭包
 date: 2017-10-26
 categories: 前端开发
 ---
 
 ## Scope
 
-要理解闭包，先要理解一个重要概念—作用域。
+作用域是理解闭包的一个重要概念。
 
 > In computer programming, the scope of a name **binding** – an association of a **name** to an **entity**, such as a variable – is the **region** of a computer program **where the binding is valid**: where the name can be used to refer to the entity. 
 >
@@ -20,29 +20,27 @@ scope又可以分为词法作用域（Lexical scope）和动态作用域(Dynamic
 >
 > 参考自[wiki百科 Scope (computer science)](https://en.wikipedia.org/wiki/Scope_(computer_science)#Lexical_scoping)
 
-在词法作用域中，一个name是否有效取决于它在源代码中的位置，也就是词法上下文。而动态作用域要相对复杂一点，在动态作用域中，一个name是否有效取决于这个程序的运行时状态，也就是运行时上下文。
-
-对词法作用域在JavaScript中的表现在本文不作阐述，具体参考这篇博文：[深入理解javascript原型和闭包（12）——简介【作用域】](http://www.cnblogs.com/wangfupeng1988/p/3991151.html)
+词法作用域具体参考这篇博文：[深入理解javascript原型和闭包（12）——简介【作用域】](http://www.cnblogs.com/wangfupeng1988/p/3991151.html)
 
 ## 对Closure的一些定义
 
-> 各种专业文献上的"闭包"（closure）定义非常抽象，很难看懂。我的理解是，闭包就是能够读取其他函数内部变量的函数。
+> 各种专业文献上的"闭包"（closure）定义非常抽象，很难看懂。我的理解是，闭包就是能够读取其他函数内部变量的**函数**。
 >
 > 参考自[阮一峰 学习Javascript闭包（Closure）](http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html)
 
-> A *closure* is the combination of a function and the lexical environment within which that function was declared.
+> A *closure* is the **combination** of a function and the lexical environment within which that function was declared.
 >
 > 参考自[MDN Closure](https://link.zhihu.com/?target=https%3A//developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
 
 MDN的定义指出了闭包需要的东西：**闭包 = 函数 + 函数定义的词法上下文环境**。阮一峰老师的定义指出了闭包产生的现象：一个函数能够**读取其他函数内部变量**。
 
-> In programming languages, closures (also lexical closures or function closures) are techniques for implementing lexically scoped name binding in languages with first-class functions. 
+> In programming languages, closures (also lexical closures or function closures) are **technique**s for implementing lexically scoped name binding in languages with first-class functions. 
 >
 > 参考自[wiki百科 Closure(computer programming)](https://en.wikipedia.org/wiki/Closure_(computer_programming))
 
-wiki百科上的定义指出了闭包需要的语言条件： *first-class functions*。关于这个知识点可以参考[“函数是一等公民”背后的含义](http://blog.leapoahead.com/2015/09/19/function-as-first-class-citizen/)。另外，定义中提到的*implementing lexically scoped name binding* ，即基于词法作用域的name绑定与scope中的binding概念相互照应。本质上就是说的就是词法作用域与变量有效性的关系。
+wiki百科上的定义指出了闭包需要的语言条件： ***first-class functions***。关于这个知识点可以参考[“函数是一等公民”背后的含义](http://blog.leapoahead.com/2015/09/19/function-as-first-class-citizen/)。另外，定义中提到的*implementing lexically scoped name binding* ，即基于词法作用域的name绑定与scope中的binding概念相互照应。本质上就是说的就是词法作用域与变量有效性的关系。
 
-> 在JavaScript中，实现外部作用域访问内部作用域中变量的方法叫做闭包。
+> 在JavaScript中，实现外部作用域访问内部作用域中变量的**方法**叫做闭包。
 >
 > 参考自《深入浅出Node.js》
 
@@ -107,9 +105,9 @@ a();
 
 ## 参考资料
 
-[动态作用域和词法域的区别是什么？](https://www.zhihu.com/question/20032419)
-[“函数是一等公民”背后的含义](http://blog.leapoahead.com/2015/09/19/function-as-first-class-citizen/)
-[js闭包的概念作用域内存模型](http://www.cnblogs.com/walter-white/p/4981151.html)
-[阮一峰 学习Javascript闭包（Closure）](http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html)
-[javascript基础拾遗——词法作用域](http://www.cnblogs.com/Quains/archive/2011/04/12/2013121.html)
-[深入理解javascript原型和闭包（12）——简介【作用域】](http://www.cnblogs.com/wangfupeng1988/p/3991151.html)
+1. [动态作用域和词法域的区别是什么？](https://www.zhihu.com/question/20032419)
+2. [“函数是一等公民”背后的含义](http://blog.leapoahead.com/2015/09/19/function-as-first-class-citizen/)
+3. [js闭包的概念作用域内存模型](http://www.cnblogs.com/walter-white/p/4981151.html)
+4. [阮一峰 学习Javascript闭包（Closure）](http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html)
+5. [javascript基础拾遗——词法作用域](http://www.cnblogs.com/Quains/archive/2011/04/12/2013121.html)
+6. [深入理解javascript原型和闭包（12）——简介【作用域】](http://www.cnblogs.com/wangfupeng1988/p/3991151.html)

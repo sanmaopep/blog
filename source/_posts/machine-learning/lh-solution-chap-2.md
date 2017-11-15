@@ -3,7 +3,6 @@ title: 统计学习方法 课后习题解答（第二章）
 date: 2017-11-06
 mathjax: true
 categories: 机器学习
-layout: false
 tags:
 	- 李航
 ---
@@ -42,7 +41,133 @@ $$-w^{(1)}+w^{(2)}+b > 0\dashrightarrow(4)$$
 
 **题目描述：**模仿例题 2.1，构建从训练数据求解感知机模型的例子。
 
-**解：**很水的一道题，照样子画葫芦就好。故略。
+**解：**很水的一道题，用jupyter撸了一遍[代码](https://github.com/sanmaopep/machine-learning/blob/master/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/%E6%84%9F%E7%9F%A5%E6%9C%BA.ipynb)：
+
+```python
+import numpy as np
+import random
+import matplotlib.pyplot as plt
+```
+
+
+```python
+# 定义输入数据
+tx = [[3,3],[4,3],[1,1]]
+ty = [+1,+1,-1]
+
+
+# 作图
+tcolor = [0]*len(ty)
+for i in range(len(ty)):
+    tcolor[i] = ('r' if ty[i] == +1 else 'b')
+    
+print(tcolor)
+transpose = np.array(tx).T
+
+plt.scatter(transpose[0],transpose[1],c=tcolor)
+plt.axis([0, 5, 0, 5])
+plt.show()
+```
+
+    ['r', 'r', 'b']
+
+
+
+![数据集分布情况](lh-solution-chap-2/output_2_1.png)
+
+
+
+```python
+# 定义原始形式的感知机
+class Perceptron():
+    def __init__(self):
+        self.learning_rate = 1
+    
+    def train(self,x,y):
+        # 定义w和b
+        w = np.array([1]*len(x[0]))
+        b = 1
+        print "w，b初始值："
+        print w,b
+        
+        # 正确个数
+        correct_flag = [0]*len(x)
+       
+        while 1:
+            # 从训练集中拿一个数据
+            index = random.randint(0, len(x) - 1)
+            if correct_flag[index]:
+                continue
+            X = np.array(x[index])
+            Y = y[index]
+            
+            # 是否分类正确
+            temp = Y*(np.sum(w*X) + b)
+            if temp > 0:
+                correct_flag[index] = 1
+                # print("点(%d,%d)分类正确" % (X[0],X[1]))
+                if np.sum(correct_flag) >= len(x):
+                    print("所有点分类正确，结束迭代")
+                    break
+            else:
+                correct_flag = [0]*len(x)
+                print("点(%d,%d)分类错误" % (X[0],X[1]))
+                w = w + self.learning_rate*Y*X
+                b = b + self.learning_rate*Y
+                print "对w，b进行调整："
+                print w,b
+        
+        self.w = w
+        self.b = b
+    
+    def getWb(self):
+        return self.w,self.b
+                
+
+p = Perceptron()
+p.train(tx,ty)
+```
+
+    w，b初始值：
+    [1 1] 1
+    点(1,1)分类错误
+    对w，b进行调整：
+    [0 0] 0
+    点(1,1)分类错误
+    对w，b进行调整：
+    [-1 -1] -1
+    点(4,3)分类错误
+    对w，b进行调整：
+    [3 2] 0
+    点(1,1)分类错误
+    对w，b进行调整：
+    [2 1] -1
+    点(1,1)分类错误
+    对w，b进行调整：
+    [1 0] -2
+    所有点分类正确，结束迭代
+
+
+
+```python
+# 作图
+w,b=p.getWb()
+# 构造直线
+if w[1] == 0:
+    y=np.linspace(0,5,100)  #这个表示在0到5之间生成100个x值
+    x=[-(w[1]*i+b)/w[0] for i in y]  #对上述生成的1000个数循环用sigmoid公式求对应的y
+else:
+    x=np.linspace(0,5,100)  #这个表示在0到5之间生成100个x值
+    y=[-(w[0]*i+b)/w[1] for i in x]  #对上述生成的1000个数循环用sigmoid公式求对应的y
+
+plt.plot(x,y)
+plt.scatter(transpose[0],transpose[1],c=tcolor)
+plt.axis([0, 5, 0, 5])
+plt.show()
+```
+
+
+![数据集分类结果](lh-solution-chap-2/output_4_0.png)
 
 ## 2.3
 
@@ -102,9 +227,33 @@ $$d(conv(S+),conv(S-))=min(d(s_+,s_-)) ,s_+ \in S+,s_- \in S-$$
 
 $$d(x^+,x_+) < d(x^+,x_-) ，d(x^-,x_+) > d(x^-,x_-)$$
 
-![引理的几何图解](./lh-solution-chap-2/yl.png)
+![引理的几何图解](lh-solution-chap-2/yl.jpg)
 
-**引理证明：** 我们只考虑$x^+$的情况，$x^-$的证明留（lan）给（de）读（zheng）者（ming）_(:з」∠)_。为了方便记述，我们令$x=x^+ \in S+$ ，于是有$d(x,x_+) < d(x,x_-) $ 。
+**引理证明：** 我们只考虑$x^+$的情况，$x^-$的证明留（lan）给（de）读（zheng）者（ming）_(:з」∠)_。为了方便记述，我们令$x=x^+ \in S+$ ，于是有$d(x,x_+) < d(x,x_-) $ 。同时记：$a=d(x,x_+) ,b=d(x,x_-) ,c=d(conv(S+),conv(S-))=d(x_+,x_-)$
+
+利用反证法，假设：$d(x,x_+)\geq d(x,x_-)$
+
+容易得到：$a\geq b>c$
+
+作图如下：
+
+![引理证明](lh-solution-chap-2/引理证明.jpg)
+
+由余弦定理：
+
+$$cos\theta = \frac{a^2+c^2-b^2}{2ac} >0 $$
+
+作$x_-$到a的垂线，记为A。容易得到：
+
+$$A = \frac{c*cos\theta}{a}(x_+-x) + x = \frac{c*cos\theta}{a}x_+ + (1-\frac{c*cos\theta}{a})x$$
+
+$$ 0<\frac{c*cos\theta}{a} <1, 0<(1-\frac{c*cos\theta}{a})<1$$
+
+故$A \in S_+$
+
+而$d(A,x_-) = sin\theta c < c = d(conv(S+),conv(S-))$
+
+这与凸壳距离的定义矛盾。故$d(x,x_+) > d(x,x_-)$
 
 **(引理证毕)**
 
@@ -126,6 +275,7 @@ $$w\cdot x^-+b <0$$
 
 **PS：** 充分性借鉴了凸优化的相关理论。关于凸优化相关知识可以参考知乎上的回答：[为什么凸优化这么重要？ - Ormsom的回答 - 知乎](https://www.zhihu.com/question/24641575/answer/164397294)。充分性证明也有采用凸集分离定理，这里不作阐述。
 
+备注：书上的Novikoff定理证明还没有完全理解，下次搞篇博文来理解一下。
 
 ## 参考资料
 
@@ -133,3 +283,6 @@ $$w\cdot x^-+b <0$$
 
 [李航第二章课后习题](http://blog.csdn.net/xiaoxiao_wen/article/details/54097835)
 
+[感知机，从原理到实现](https://www.leiphone.com/news/201706/QFydbeV7FXQtRIOl.html)
+
+[感知机代码实现](https://github.com/WenDesi/lihang_book_algorithm/blob/master/perceptron/binary_perceptron.py)
