@@ -14,6 +14,7 @@ const filter = require('gulp-filter')
 const rollup = require('rollup')
 const babel = require('rollup-plugin-babel')
 const uglify = require('rollup-plugin-uglify')
+const jsx = require('rollup-plugin-jsx')
 
 const clean = require('gulp-clean')
 

@@ -1,7 +1,6 @@
 let uiNavItem = document.querySelectorAll(".ui-nav-container li");
 
 if (uiNavItem) {
-    console.log(uiNavItem);
     let len = uiNavItem.length;
     let selector = uiNavItem[0];
 

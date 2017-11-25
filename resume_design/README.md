@@ -6,4 +6,4 @@
 
 
 ## TODO
-babel-polyfill 记得加
+babel不编译的问题？

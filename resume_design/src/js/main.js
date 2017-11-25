@@ -1,4 +1,5 @@
 'use strict';
 
 import foo from './lib/sr';
-import nav from './lib/nav'
+import nav from './lib/nav';
+
