@@ -261,7 +261,7 @@ table {
       -ms-flex-positive: 10;
           flex-grow: 10;
   color: #6E6A4D;
-  padding: 50px 0px 50px 60px;
+  padding: 50px 0px 50px 30px;
   -ms-flex-item-align: stretch;
       align-self: stretch;
   display: -webkit-box;
@@ -283,6 +283,10 @@ table {
   background-image: url(/assets/article-background.png);
   background-repeat: no-repeat;
   background-position: 100% 50%; }
+  .ui-content-article .ui-content-story-outter {
+    padding-left: 15px;
+    overflow-y: scroll;
+    overflow-x: visible; }
 
 footer {
   position: absolute;
@@ -298,8 +302,7 @@ footer {
 .ui-content-story {
   border-left: 3px solid #6E6A4D;
   padding: 0 30px;
-  overflow-y: scroll;
-  overflow-x: visible; }
+  margin-left: 30px; }
   .ui-content-story * {
     font-family: "hyry"; }
   .ui-content-story h1 {

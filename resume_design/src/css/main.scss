@@ -97,7 +97,7 @@ $navWidth:300px;
 .ui-content-article {
     flex-grow: 10;
     color: $subColor;
-    padding: 50px 0px 50px 60px; // 左边框
+    padding: 50px 0px 50px 30px; // 左边框
     align-self: stretch;
     display: flex;
     margin-right: -15px;
@@ -107,6 +107,11 @@ $navWidth:300px;
     background-image: url(/assets/article-background.png);
     background-repeat: no-repeat;
     background-position: 100% 50%;
+    .ui-content-story-outter {
+        padding-left: 15px;
+        overflow-y: scroll;
+        overflow-x: visible;
+    }
 }
 
 // 底部内容取余
@@ -130,8 +135,7 @@ footer {
     }
     border-left: 3px solid $subColor;
     padding: 0 30px;
-    overflow-y: scroll;
-    overflow-x: visible;
+    margin-left: 30px;
     h1 {
         // border-bottom: 3px solid $subColor;
         // padding: 10px;
