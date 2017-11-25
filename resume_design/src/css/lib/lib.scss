@@ -1,0 +1,35 @@
+// 字体
+@font-face {
+    font-family: "hyry";
+    src: url("/fonts/hyry55w.ttf");
+}
+
+@mixin hyryFont {
+    font-family: "hyry";
+}
+
+@mixin customFont {
+    font-family: "Yahei";
+}
+
+// 配色
+$mainColor:#566685;
+$subColor:#6E6A4D;
+//工具函数
+@mixin fullScreen {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+@mixin fullHeight {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+
+@mixin clearFix {
+    overflow: hidden;
+}

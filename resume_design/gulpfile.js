@@ -40,9 +40,9 @@ gulp.task('dev', ['pug', 'sass', 'js', 'dev-server'], () => {
     console.info("Start Development!");
 
     // listen the change of your file
-    gulp.watch('./src/pug/**/*.pug', ['pug-watch'])
-    gulp.watch('./src/css/**/*.scss', ['sass'])
-    gulp.watch('./src/js/**/*.js', ['js-watch'])
+    gulp.watch('src/pug/**/*.pug', ['pug-watch'])
+    gulp.watch('src/css/**/*.scss', ['sass'])
+    gulp.watch('src/js/**/*.js', ['js-watch'])
 
 })
 

@@ -6,11 +6,20 @@ html(lang="zh-cn")
     meta(name="viewport",content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no")
     meta(name="format-detection",content="telephone=no")
     meta(name="format-detection",content="email=no")
-    title 毛怡伟的简历
+    title 毛怡伟的首页
     link(rel="stylesheet", href="/css/main.css") 
   body
-    .ui-index-left
-      h1 陆幽轩
-    .ui-index-right
-      p 大漠风尘日色昏
+    .ui-container
+      .ui-nav-container
+        include ./components/nav.pug
+      .ui-content-container
+        //- .ui-content-title 
+        //-   h1 基本信息
+        .ui-content-article
+          include ./components/basicinfo.pug
+        .ui-content-image
+          img(src="assets/kawai.png")
+          .ui-content-image-left
+          
+      
     script(src="./js/main.js")
