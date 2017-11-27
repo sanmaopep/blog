@@ -56,10 +56,40 @@ function storyState() {
     // 滚轮事件
     this._mouseWheel = this._mouseWheel.bind(this);
     this.storyOutterDOM.addEventListener('mousewheel', this._mouseWheel);
+
+    this.trigger = false;
     document.addEventListener('mousewheel', this._mouseWheel);
 
     // TODO 移动端touch事件
+    this._triggerMobileNav = this._triggerMobileNav.bind(this);
+    this._untriggerMobileNav = this._untriggerMobileNav.bind(this);
+    document.querySelector(".ui-mobile-nav-trigger").addEventListener("click", this._triggerMobileNav);
+    document.querySelector(".ui-nav-container").addEventListener("click", event => {
+        event.stopPropagation();
+    });
+    document.body.addEventListener("click", this._untriggerMobileNav);
 }
+
+// 移动端显示Nav
+storyState.prototype._triggerMobileNav = function (event) {
+    event.stopPropagation();
+    let navContainer = document.querySelector(".ui-nav-container");
+    if (this.trigger) {
+        navContainer.classList.remove("ui-mobile-show");
+        this.trigger = false;
+    } else {
+        navContainer.classList.add("ui-mobile-show");
+        this.trigger = true;
+    }
+};
+
+storyState.prototype._untriggerMobileNav = function (event) {
+    let navContainer = document.querySelector(".ui-nav-container");
+    if (this.trigger) {
+        navContainer.classList.remove("ui-mobile-show");
+        this.trigger = false;
+    }
+};
 
 // 鼠标滚动事件
 storyState.prototype._mouseWheel = function (event) {
