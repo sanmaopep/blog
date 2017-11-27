@@ -1,7 +1,3 @@
-
-
-// 导航栏select事件
-
 // 上下Nav移动
 function storyState() {
 

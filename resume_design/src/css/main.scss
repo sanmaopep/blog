@@ -1,6 +1,5 @@
 @import './lib/reset.scss';
 @import './lib/lib.scss';
-@import './lib/mobile.scss';
 // index style
 // ---------------------------------
 * {
@@ -203,3 +202,6 @@ footer {
         }
     }
 }
+
+// 移动端/打印适配
+@import './lib/mobile.scss';

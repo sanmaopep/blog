@@ -359,3 +359,18 @@ footer {
       font-size: 18px;
       display: inline-block;
       width: 30px; }
+
+.ui-mobile-nav-container {
+  display: none; }
+
+@media screen and (max-width: 850px) {
+  .ui-nav-container {
+    display: none; }
+  .ui-content-container .ui-content-article {
+    padding-left: 0; }
+  .ui-content-container .ui-content-image {
+    display: none; } }
+
+@media print {
+  .ui-content-image {
+    display: none !important; } }
