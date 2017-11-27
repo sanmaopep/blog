@@ -130,6 +130,9 @@ footer {
 
 // 内容区域排版
 .ui-content-story {
+    // 为了JS动画准备
+    transition: all .5s;
+    visibility: hidden;
     * {
         @include hyryFont;
     }
@@ -156,7 +159,7 @@ footer {
         margin: 20px 0;
     }
     h2 {
-        border-top: 3px solid $subColor;
+        // border-top: 3px solid $subColor;
         padding-top: 20px;
     }
     h3 {

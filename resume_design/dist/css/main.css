@@ -132,8 +132,8 @@ table {
 @font-face {
   font-family: 'iconfont';
   /* project id 488089 */
-  src: url("//at.alicdn.com/t/font_488089_u9ccrg8o1fbf0f6r.eot");
-  src: url("//at.alicdn.com/t/font_488089_u9ccrg8o1fbf0f6r.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_488089_u9ccrg8o1fbf0f6r.woff") format("woff"), url("//at.alicdn.com/t/font_488089_u9ccrg8o1fbf0f6r.ttf") format("truetype"), url("//at.alicdn.com/t/font_488089_u9ccrg8o1fbf0f6r.svg#iconfont") format("svg"); }
+  src: url("//at.alicdn.com/t/font_488089_h4m5w8ue8lvoyldi.eot");
+  src: url("//at.alicdn.com/t/font_488089_h4m5w8ue8lvoyldi.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_488089_h4m5w8ue8lvoyldi.woff") format("woff"), url("//at.alicdn.com/t/font_488089_h4m5w8ue8lvoyldi.ttf") format("truetype"), url("//at.alicdn.com/t/font_488089_h4m5w8ue8lvoyldi.svg#iconfont") format("svg"); }
 
 .iconfont {
   font-family: "iconfont" !important;
@@ -313,6 +313,9 @@ footer {
     font-family: "hyry"; }
 
 .ui-content-story {
+  -webkit-transition: all .5s;
+  transition: all .5s;
+  visibility: hidden;
   border-left: 3px solid #6E6A4D;
   padding: 10px 30px;
   margin-left: 30px; }
@@ -324,7 +327,6 @@ footer {
   .ui-content-story h3 {
     margin: 20px 0; }
   .ui-content-story h2 {
-    border-top: 3px solid #6E6A4D;
     padding-top: 20px; }
   .ui-content-story h3 {
     position: relative; }
