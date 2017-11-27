@@ -56,11 +56,10 @@ function storyState() {
     // 滚轮事件
     this._mouseWheel = this._mouseWheel.bind(this);
     this.storyOutterDOM.addEventListener('mousewheel', this._mouseWheel);
-
-    this.trigger = false;
     document.addEventListener('mousewheel', this._mouseWheel);
 
-    // TODO 移动端touch事件
+    // 移动端Nav
+    this.trigger = false;
     this._triggerMobileNav = this._triggerMobileNav.bind(this);
     this._untriggerMobileNav = this._untriggerMobileNav.bind(this);
     document.querySelector(".ui-mobile-nav-trigger").addEventListener("click", this._triggerMobileNav);
@@ -68,7 +67,47 @@ function storyState() {
         event.stopPropagation();
     });
     document.body.addEventListener("click", this._untriggerMobileNav);
+
+    // 移动端touch事件
+    this._touchHandler = this._touchHandler.bind(this);
+    let contentArticle = document.querySelector(".ui-content-article");
+    contentArticle.addEventListener('touchstart', this._touchHandler);
+    contentArticle.addEventListener('touchend', this._touchHandler);
+    contentArticle.addEventListener('touchmove', this._touchHandler);
 }
+
+// 移动端touch事件处理
+storyState.prototype._touchHandler = function (event) {
+    let touchY, deltaTouch;
+    switch (event.type) {
+        case "touchend":
+            deltaTouch = this.endTouch - this.startTouch;
+            if (deltaTouch > 0) {
+                if (this.storyOutterDOM.scrollTop === 0) {
+                    this._upStory();
+                }
+            } else {
+                let scrollTop = this.storyOutterDOM.scrollTop;
+                let offsetHeight = this.storyOutterDOM.offsetHeight;
+                let scrollHeight = this.storyOutterDOM.scrollHeight;
+
+                if (scrollTop + offsetHeight >= scrollHeight) {
+                    this._downStory();
+                }
+            }
+            break;
+
+        case "touchstart":
+            touchY = event.touches[0].clientY;
+            this.startTouch = touchY;
+            break;
+
+        case "touchmove":
+            touchY = event.touches[0].clientY;
+            this.endTouch = touchY;
+            break;
+    }
+};
 
 // 移动端显示Nav
 storyState.prototype._triggerMobileNav = function (event) {
