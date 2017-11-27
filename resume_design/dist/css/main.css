@@ -129,6 +129,19 @@ table {
   font-family: "hyry";
   src: url("/fonts/hyry55w.ttf"); }
 
+@font-face {
+  font-family: 'iconfont';
+  /* project id 488089 */
+  src: url("//at.alicdn.com/t/font_488089_u9ccrg8o1fbf0f6r.eot");
+  src: url("//at.alicdn.com/t/font_488089_u9ccrg8o1fbf0f6r.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_488089_u9ccrg8o1fbf0f6r.woff") format("woff"), url("//at.alicdn.com/t/font_488089_u9ccrg8o1fbf0f6r.ttf") format("truetype"), url("//at.alicdn.com/t/font_488089_u9ccrg8o1fbf0f6r.svg#iconfont") format("svg"); }
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale; }
+
 * {
   font-family: 'Yahei'; }
 
@@ -301,7 +314,7 @@ footer {
 
 .ui-content-story {
   border-left: 3px solid #6E6A4D;
-  padding: 0 30px;
+  padding: 10px 30px;
   margin-left: 30px; }
   .ui-content-story * {
     font-family: "hyry"; }
@@ -312,14 +325,14 @@ footer {
     margin: 20px 0; }
   .ui-content-story h2 {
     border-top: 3px solid #6E6A4D;
-    padding-top: 10px; }
+    padding-top: 20px; }
   .ui-content-story h3 {
     position: relative; }
     .ui-content-story h3:before {
       content: "";
       display: block;
       position: absolute;
-      left: -45px;
+      left: -44px;
       top: -7px;
       width: 30px;
       height: 30px;
@@ -330,4 +343,17 @@ footer {
   .ui-content-story p {
     margin: 5px 0; }
   .ui-content-story img {
-    width: 200px; }
+    width: 200px;
+    margin: 10px 10px 10px 0; }
+  .ui-content-story a {
+    color: #6E6A4D; }
+  .ui-content-story .divider {
+    height: 30px; }
+  .ui-content-story .contact {
+    font-size: 18px; }
+    .ui-content-story .contact a {
+      font-size: 18px; }
+    .ui-content-story .contact .iconfont {
+      font-size: 18px;
+      display: inline-block;
+      width: 30px; }
