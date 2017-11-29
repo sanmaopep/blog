@@ -7,6 +7,11 @@
 // 上下Nav移动
 function storyState() {
 
+    this._touchHandler = this._touchHandler.bind(this);
+    this._mouseWheel = this._mouseWheel.bind(this);
+    this._triggerMobileNav = this._triggerMobileNav.bind(this);
+    this._untriggerMobileNav = this._untriggerMobileNav.bind(this);
+
     this.storyOutterDOM = document.querySelector(".ui-content-story-outter");
     this.uiNavItems = document.querySelectorAll(".ui-nav-container li");
 
@@ -49,19 +54,19 @@ function storyState() {
 
             this.uiNavItems[i].addEventListener('click', () => {
                 this._setCurrIndex(i - 1);
+                this._untriggerMobileNav();
             });
         }
     }
 
     // 滚轮事件
-    this._mouseWheel = this._mouseWheel.bind(this);
+
     this.storyOutterDOM.addEventListener('mousewheel', this._mouseWheel);
     document.addEventListener('mousewheel', this._mouseWheel);
 
     // 移动端Nav
     this.trigger = false;
-    this._triggerMobileNav = this._triggerMobileNav.bind(this);
-    this._untriggerMobileNav = this._untriggerMobileNav.bind(this);
+
     document.querySelector(".ui-mobile-nav-trigger").addEventListener("click", this._triggerMobileNav);
     document.querySelector(".ui-nav-container").addEventListener("click", event => {
         event.stopPropagation();
@@ -69,7 +74,7 @@ function storyState() {
     document.body.addEventListener("click", this._untriggerMobileNav);
 
     // 移动端touch事件
-    this._touchHandler = this._touchHandler.bind(this);
+
     let contentArticle = document.querySelector(".ui-content-article");
     contentArticle.addEventListener('touchstart', this._touchHandler);
     contentArticle.addEventListener('touchend', this._touchHandler);
