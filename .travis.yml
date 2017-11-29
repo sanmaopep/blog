@@ -1,0 +1,27 @@
+language: node_js
+node_js:
+- "7"  # nodejs的版本
+branches:
+  only:
+  - master  # 设置自动化部署的源码分支
+
+env:
+  global:  
+    secure: 
+
+before_install:
+- export TZ='Asia/Shanghai'  
+- npm install -g hexo
+- npm install -g hexo-cli 
+before_script:
+
+# 安装依赖组件
+install:
+- npm install
+# 执行的命令
+script:
+- hexo clean
+- hexo generate
+# 执行的成功后执行 
+after_success:
+- hexo deploy
