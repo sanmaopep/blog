@@ -39,7 +39,7 @@ function onClick(){
 
 我们高兴地完成了这个需求。过了几天，产品经理跑过来和我们说，当我们点击另外一个按钮的时候也能启动一些程序。我们理所当然地想到了我们封装过的startProgram，不错，这个需求几分钟就能做好了(*^▽^*)。不，等等，糟糕，option我忘掉是什么了_(:з」∠)_ 于是又苦逼地去查API文档，查到option有哪些东西了，一个一个对应地补上去，终于完成了这个需求。
 
-![“麻烦 表情包”的图片搜索结果](http://img.youbiaoqing.com/u/a69ec5781123a6a5107fcf1dba42169a.jpg)
+![](http://img.youbiaoqing.com/u/a69ec5781123a6a5107fcf1dba42169a.jpg)
 
 这时候你应该发现不太对劲了。记得写Java的时候，option会被强制定义为一个属性定好的类：
 
@@ -69,7 +69,7 @@ export function startProgram(pid :number,option: { env: string,work:string }){
 
 好了，安心了，每次不知道option是什么，再也不用去跑十万八千里翻阅API文档啦！
 
-![“麻烦 表情包”的图片搜索结果](http://upload.didown.com/picture/0307/14888848155_big.jpg)
+![](http://upload.didown.com/picture/0307/14888848155_big.jpg)
 
 我们还可以写得更舒服一点：
 
@@ -141,11 +141,11 @@ typescript会让vscode的智能提示更加聪明，很多东西通过强类型�
 
 自动生成import： [Auto Import](https://marketplace.visualstudio.com/items?itemName=steoates.autoimport)
 
-![img](https://gifyu.com/images/autoimport.gif)
+![](https://gifyu.com/images/autoimport.gif)
 
 快速生成interface ：[json2ts](https://marketplace.visualstudio.com/items?itemName=GregorBiswanger.json2ts)
 
-![json2ts Screenshot](https://github.com/GregorBiswanger/VSCode-json2ts/blob/master/images/json2ts.gif?raw=true)
+![](https://github.com/GregorBiswanger/VSCode-json2ts/blob/master/images/json2ts.gif?raw=true)
 
 ## 总结
 
