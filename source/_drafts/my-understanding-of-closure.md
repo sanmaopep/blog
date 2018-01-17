@@ -103,6 +103,32 @@ a();
 >
 > 参考自 《深入浅出Node.js》
 
+## 实践中的闭包
+
+```javascript
+ // 通用排序处理器，自动分析并处理多种类型的排序
+sortHandler(key) {
+  return function (arec, brec) {
+    let a = arec[key], b = brec[key]
+    // 先判断是不是日期
+    const dataRegex = /^\d{4}-\d{1,2}-\d{1,2}\s\d{2}:\d{2}:\d{2}$/
+    if (dataRegex.test(a) && dataRegex.test(b)) {
+      return new Date(a) - new Date(b);
+    }
+    // 是否是string
+    if (a.length >= 0 && b.length >= 0) {
+      return a.length - b.length
+    }
+    // 适用于number
+    return a - b;
+  }
+}
+```
+
+
+
+
+
 ## 参考资料
 
 1. [动态作用域和词法域的区别是什么？](https://www.zhihu.com/question/20032419)

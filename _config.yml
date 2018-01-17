@@ -4,10 +4,10 @@
 
 # Site
 title: 玩毛线的毛线
-subtitle: 重度吸猫患者
-description: 做有情怀的程序员
-signature: 做有情怀的程序员
-author: 陆幽轩
+subtitle: 
+description: 
+signature: 
+author: maoyiwei
 language: zh-Hans
 timezone:
 
@@ -93,6 +93,10 @@ pandoc:
 ## Famous Themes Next
 ## http://theme-next.iissnan.com/getting-started.html#stable
 theme: next
+
+### simple so i like it
+
+# theme: apollo
 
 ## Themes of Mine
 # theme: hexo-theme-woolen

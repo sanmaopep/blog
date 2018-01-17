@@ -87,7 +87,7 @@ menu:
   # tags: /tags/ || tags
   # categories: /categories/ || th
   
-  简历: /resume/ || user
+  关于: /about/ || user
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
   #commonweal: /404/ || heartbeat
@@ -353,8 +353,8 @@ baidu_analytics: 5248c6d2daced8b8d25892af7f46b866
 
 # Disqus
 disqus:
-  enable: false
-  shortname:
+  enable: true
+  shortname: maoyiwei
   count: true
 
 # Hypercomments
@@ -372,7 +372,7 @@ changyan:
 # more info please open https://github.com/xCss/Valine
 # 记得创建一个Class：Comment
 valine:
-  enable: true
+  enable: false
   appid:  QySqsYXw3nQ45YhnPpHlKlMU-gzGzoHsz
   appkey:  grhs2dCWMfgCmsYOICcv9EHz
   notify: false # mail notifier , https://github.com/xCss/Valine/wiki
@@ -482,7 +482,7 @@ rating:
 # You can visit https://leancloud.cn get AppID and AppKey.
 # 要创建一个表为：Counter(无限制)
 leancloud_visitors:
-  enable: true
+  enable: false
   app_id: QySqsYXw3nQ45YhnPpHlKlMU-gzGzoHsz
   app_key: grhs2dCWMfgCmsYOICcv9EHz
 
