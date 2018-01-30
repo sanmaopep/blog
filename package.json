@@ -3,9 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "start": "npm run server",
     "server": "hexo server",
     "deploy": "hexo clean && hexo generate && hexo deploy",
-    "update":"git add . && git commit -m 'feature' && git push && npm run deploy"
+    "update": "git add . && git commit -m 'feature' && git push && npm run deploy"
   },
   "hexo": {
     "version": "3.4.4"

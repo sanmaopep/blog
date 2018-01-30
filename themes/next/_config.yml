@@ -10,15 +10,15 @@ override: false
 # Site Information Settings
 # ---------------------------------------------------------------
 
-# set your language
+# set your languagelanguage
 
 # To get favicons visit: https://realfavicongenerator.net
 # Put your favicons into `hexo-site/source/` or `hexo-site/themes/next/source/images/` directory.
 # Default NexT favicons placed in `hexo-site/themes/next/source/images/` directory.
 # And if you want to place your icons in `hexo-site/source/`, you must remove `/images` prefix from pathes.
 favicon:
-  small: /images/favicon-16x16.png
-  medium: /images/favicon-32x32.png
+  small: /assets/avatar2.png
+  medium: /assets/avatar2.png
   apple_touch_icon: /images/apple-touch-icon.png
   safari_pinned_tab: /images/logo.svg
   #android_manifest: /images/manifest.json
@@ -87,7 +87,7 @@ menu:
   # tags: /tags/ || tags
   # categories: /categories/ || th
   
-  关于: /about/ || user
+  about: /about/ || user
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
   #commonweal: /404/ || heartbeat
@@ -119,10 +119,10 @@ scheme: Pisces
 # Value before `||` delimeter is the target permalink.
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, globe icon will be loaded.
 social:
-  GitHub: https://github.com/sanmaopep || github
-  Wechat: /assets/weqcode.jpg || wechat
-  Douban: https://www.douban.com/people/130847043/ || globe
-  Email: mailto:jsmyw95@qq.com || envelope
+  GitHub: https://github.com/sanmaopep 
+  Wechat: /assets/weqcode.jpg
+  # Douban: https://www.douban.com/people/130847043/
+  Email: mailto:jsmyw95@qq.com
   #Google: https://plus.google.com/yourname || google
   #Twitter: https://twitter.com/yourname || twitter
   #FB Page: https://www.facebook.com/yourname || facebook
@@ -134,7 +134,7 @@ social:
 
 social_icons:
   enable: true
-  icons_only: false
+  icons_only: true
   transition: false
 
 # Blog rolls
@@ -167,8 +167,7 @@ creative_commons: by-nc-sa
 
 sidebar:
   # Sidebar Position, available value: left | right (only for Pisces | Gemini).
-  position: left
-  #position: right
+  position: right
 
   # Sidebar Display, available value (only for Muse | Mist):
   #  - post    expand on posts automatically. Default.
@@ -374,7 +373,7 @@ changyan:
 valine:
   enable: false
   appid:  QySqsYXw3nQ45YhnPpHlKlMU-gzGzoHsz
-  appkey:  grhs2dCWMfgCmsYOICcv9EHz
+  appkey: grhs2dCWMfgCmsYOICcv9EHz
   notify: false # mail notifier , https://github.com/xCss/Valine/wiki
   verify: true # Verification code
   placeholder: 请输入评论
