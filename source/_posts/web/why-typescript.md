@@ -1,5 +1,5 @@
 ---
-title: 为什么要用typescript
+title: 为什么要用Typescript
 date: 2017-12-05
 categories: 前端开发
 ---
