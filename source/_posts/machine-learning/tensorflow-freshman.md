@@ -1,7 +1,6 @@
 ---
 title: Tensorflow入门笔记
 date: 2017-05-20
-mathjax: true
 categories: 机器学习
 ---
 
@@ -10,7 +9,7 @@ categories: 机器学习
 **背景：** Python和C++来回切换会造成巨大开销。
 
 >To do efficient numerical computing in Python, we typically use libraries like [NumPy](http://www.numpy.org/)that do expensive operations such as matrix  multiplication outside Python, using highly efficient code implemented in another language. Unfortunately, there can still be a lot of overhead from switching back to Python every operation. This overhead is especially bad if you want to run computations on GPUs or in a distributed manner, where there can be a high cost to transferring data.
-
+<!-- more -->
 **解决方案：** 利用Python基于Graph定义所有运算，然后让这些一次性在Python外完成这些运算。
 
 >TensorFlow also does its heavy lifting outside Python, but it tahttps://www.tensorflow.org/get_started/mnist/proskes things a step further to avoid this overhead. Instead of running a single expensive operation independently from Python, TensorFlow lets us describe a graph of interacting operations that run entirely outside Python. This approach is similar to that used in Theano or Torch.

@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 玩毛线的毛线
+title: MaoYiWei
 subtitle: 
 description: 
 signature: 
-author: Mao YiWei
+author: MaoYiWei
 language: zh-Hans
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://www.maoyiwei.top
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -81,30 +81,19 @@ deploy:
 per_page: 10
 pagination_dir: page
 
+## Famous Themes Next
+## http://theme-next.iissnan.com/getting-started.html#stable
+theme: next
+
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 pandoc:
   mathEngine: mathjax
 
-## Themes: https://hexo.io/themes/
-## theme: landscape
-
-
-## Famous Themes Next
-## http://theme-next.iissnan.com/getting-started.html#stable
-theme: next
-
-### simple so i like it
-
-# theme: apollo
-
-## Themes of Mine
-# theme: hexo-theme-woolen
-
 
 # ## support for local search
-# search:
-#   path: search.xml
-#   field: post
+search:
+  path: search.xml
+  field: post
 
 

@@ -1,7 +1,6 @@
 ---
 title: Tensorflow训练多层卷积神经网络
 date: 2017-05-22
-mathjax: true
 categories: 机器学习
 layout: false
 tags:
