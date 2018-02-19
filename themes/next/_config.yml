@@ -23,8 +23,8 @@ cache:
 # For example, you put your favicons into `hexo-site/source/images` directory.
 # Then need to rename & redefine they on any other names, otherwise icons from Next will rewrite your custom icons in Hexo.
 favicon:
-  small: /assets/avatar2.png
-  medium: /assets/avatar2.png
+  small: /assets/favicon-16.ico
+  medium: /assets/favicon-32.ico
   apple_touch_icon: /favicons/apple-touch-icon.png
   safari_pinned_tab: /favicons/safari-pinned-tab.svg
   android_manifest: /favicons/manifest.json
@@ -129,6 +129,7 @@ site_state: true
 social:
   GitHub: https://github.com/sanmaopep || github
   E-Mail: mailto:jsmyw95@qq.com || envelope
+  LinkedIn: https://www.linkedin.com/in/maoyiwei/ || linkedin
   #Google: https://plus.google.com/yourname || google
   #Twitter: https://twitter.com/yourname || twitter
   #FB Page: https://www.facebook.com/yourname || facebook
