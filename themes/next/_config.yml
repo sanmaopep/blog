@@ -60,7 +60,7 @@ footer:
     version: true
   # -------------------------------------------------------------
   # Any custom text can be defined here.
-  custom_text: Hosted by <a target="_blank" href="https://coding.net/">Coding Pages</a>
+  custom_text:
 
 # ---------------------------------------------------------------
 # SEO Settings
