@@ -1,10 +1,29 @@
 ---
-title: 统计学习方法 课后习题解答（第二章）
-date: 2017-11-06
+title: 统计学习方法 笔记与习题 第二章
 categories: 机器学习
 tags:
 	- 李航
 ---
+
+# 知识点梳理
+
+## 相关概念
+
+###超平面 Hyperplane
+
+n维欧氏空间中余维度为一（维度n-1）的子空间，平面中的直线，空间中的平面都属于超平面。
+
+### 欧氏空间的点到超平面的距离
+
+公式为：
+$$\frac{w \cdot x_0+b}{||w||}$$
+推导步骤：
+
+<!-- more -->![](./lh-solution-chap-2/hyperplaneDistance.jpg)
+
+
+
+# 课后习题答案
 
 ## 2.1
 
@@ -18,7 +37,6 @@ tags:
 | 1         | -1        | 1    |
 | -1        | 1         | 1    |
 | -1        | -1        | -1   |
-<!-- more -->
 接下来我们简单证明一下异或操作的线性不可分性：
 
 **证：**利用反证法，假设存在一个超平面$wx+b=0$，满足条件：
@@ -152,6 +170,7 @@ p.train(tx,ty)
 # 作图
 w,b=p.getWb()
 # 构造直线
+# 注意，垂直的处理！
 if w[1] == 0:
     y=np.linspace(0,5,100)  #这个表示在0到5之间生成100个x值
     x=[-(w[1]*i+b)/w[0] for i in y]  #对上述生成的1000个数循环用sigmoid公式求对应的y
@@ -226,9 +245,9 @@ $$d(conv(S+),conv(S-))=min(d(s_+,s_-)) ,s_+ \in S+,s_- \in S-$$
 
 $$d(x^+,x_+) < d(x^+,x_-) ，d(x^-,x_+) > d(x^-,x_-)$$
 
-![引理的几何图解](lh-solution-chap-2/yl.jpg)
+![引理的几何图解](lh-solution-chap-2/yl.png)
 
-**引理证明：** 我们只考虑$x^+$的情况，$x^-$的证明留（lan）给（de）读（zheng）者（ming）_(:з」∠)_。为了方便记述，我们令$x=x^+ \in S+$ ，于是有$d(x,x_+) < d(x,x_-) $ 。同时记：$a=d(x,x_+) ,b=d(x,x_-) ,c=d(conv(S+),conv(S-))=d(x_+,x_-)$
+**引理证明：** 我们只考虑$x^+$的情况，$x^-$的证明留（lan）给（de）读（zheng）者（ming）。为了方便记述，我们令$x=x^+ \in S+$ ，于是有$d(x,x_+) < d(x,x_-) $ 。同时记：$a=d(x,x_+) ,b=d(x,x_-) ,c=d(conv(S+),conv(S-))=d(x_+,x_-)$
 
 利用反证法，假设：$d(x,x_+)\geq d(x,x_-)$
 
@@ -236,7 +255,7 @@ $$d(x^+,x_+) < d(x^+,x_-) ，d(x^-,x_+) > d(x^-,x_-)$$
 
 作图如下：
 
-![引理证明](lh-solution-chap-2/引理证明.jpg)
+![引理证明](lh-solution-chap-2/ylprove.png)
 
 由余弦定理：
 
@@ -274,8 +293,6 @@ $$w\cdot x^-+b <0$$
 
 **PS：** 充分性借鉴了凸优化的相关理论。关于凸优化相关知识可以参考知乎上的回答：[为什么凸优化这么重要？ - Ormsom的回答 - 知乎](https://www.zhihu.com/question/24641575/answer/164397294)。充分性证明也有采用凸集分离定理，这里不作阐述。
 
-备注：书上的Novikoff定理证明还没有完全理解，下次搞篇博文来理解一下。
-
 ## 参考资料
 
 [凸包与线性可分](http://blog.csdn.net/y954877035/article/details/52210734)
@@ -285,3 +302,5 @@ $$w\cdot x^-+b <0$$
 [感知机，从原理到实现](https://www.leiphone.com/news/201706/QFydbeV7FXQtRIOl.html)
 
 [感知机代码实现](https://github.com/WenDesi/lihang_book_algorithm/blob/master/perceptron/binary_perceptron.py)
+
+[点到超平面的距离推导](http://blog.csdn.net/yutao03081/article/details/76652943)
