@@ -11,6 +11,8 @@ categories: 大数据
 
 D3和Echarts等框架不同之处在于，D3主要解决基于数据的DOM操作方法，而不是提供一个完整地可视化解决方案。D3提供了很多数据转换的函数，方便你进行DOM操作与绘图，但是本身并不进行绘图。虽然麻烦，但是D3让我们更加灵活地实现各种可视化应用。
 
+<!-- more -->
+
 ## Selections
 
 > Modifying documents using the [W3C DOM API](https://www.w3.org/DOM/DOMTR) is tedious.
