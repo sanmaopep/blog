@@ -7,7 +7,9 @@ I'm reading CLRS and fall into the deep thoughts of loop invariants.I want to fi
 
 ### UNDERSTAND LOOP INVARIANTS
 
-**Loop Invariants** is a kind of strong tool to prove the correctness of some algorithms.It's similar to **Mathematical Induction(MI)** which is divided into two steps:**Base Step** and **Inductive Step**.Loop invariants can be divided into three steps:**Initialization**,**Maintenance** and **Termination**.Compared with MI,LI add one more step called termination,because loop will always terminate in correct algorithms.
+**Loop Invariants** is a kind of strong tool to prove the correctness of some algorithms.It's similar to **Mathematical Induction(MI)** which is divided into two steps:**Base Step** and **Inductive Step**.
+
+Loop invariants can be divided into three steps:**Initialization**,**Maintenance** and **Termination**.Compared with MI,LI add one more step called termination,because loop will always terminate in correct algorithms.
 
 <!--more-->
 
@@ -89,7 +91,7 @@ And we know A is sorted from small to large.Last iteration,every elements in A i
 
 **Termination:**Loop is terminated when k=len(A)-1.The condition "A is sorted" is still true.
 
-Let me give you some tips.**Run algorithms in your own minds,find condition and features in the process.**If the condition can't hold itself,**find another condition or feature to prove the condition**.And finally,you will find these features or condition is just the loop invariants you want to figure out.
+Let me give you some tips.**Run algorithms in your own minds,find condition and features in the process.**If the condition can't hold itself,**find another condition or feature to prove the condition**.And finally,you will find that these features or conditions are just the loop invariants you want to figure out.
 
 ### EXERCISES IN CLRS
 
@@ -158,7 +160,7 @@ presented in this chapter.
 
 $$A[0] \leq A[1] \leq ...\leq A[i]$$
 
-But these condition can't hold correctness itself,so we use the result of part(b):
+But these condition can't hold correctness itself,so we use the result of part(b)
 
 $$A[i] \leq A[i+1],A[i+2],....,A[n-1]$$
 
