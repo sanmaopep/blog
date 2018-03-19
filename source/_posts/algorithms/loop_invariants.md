@@ -1,5 +1,5 @@
 ---
-title: How to prove the correctness of algorithms
+title: How to prove algorithms
 categories: 基础算法
 ---
 
@@ -90,6 +90,99 @@ And we know A is sorted from small to large.Last iteration,every elements in A i
 **Termination:**Loop is terminated when k=len(A)-1.The condition "A is sorted" is still true.
 
 Let me give you some tips.**Run algorithms in your own minds,find condition and features in the process.**If the condition can't hold itself,**find another condition or feature to prove the condition**.And finally,you will find these features or condition is just the loop invariants you want to figure out.
+
+### EXERCISES IN CLRS
+
+#### Bubble sort
+
+```python
+for i in range(0,len(A)):
+    for j in range(len(A)-1,i+1，-1):
+        if A[j]<A[j-1]:
+            A[j],A[j-1]=A[j-1],A[j]
+```
+
+**a.** Let$A$denote the output of BUBBLESORT To prove that BUBBLESORT is
+correct, we need to prove that it terminates and that
+$$A[0] \leq A[1] \leq A[2] ..... \leq A[n-1]$$
+
+where n = len(A). In order to show that BUBBLESORT actually sorts, what
+else do we need to prove?The next two parts will prove these inequality.
+**b.** State precisely a loop invariant for the for loop in lines 2–4, and prove that this
+loop invariant holds. Your proof should use the structure of the loop invariant
+proof presented in this chapter.
+
+**THINKING:** Firstly,let's make a concrete example:
+
+```python
+a1,a2,a3,a4 = 5,7,3,2
+A = [a1,a2,a3,a4]
+# First iteration
+# We have A[2] < A[3]
+A = [a1,a2,a4,a3]
+# Second,A[1] < A[2],A[3]
+A = [a1,a4,a2,a3]
+# Third,A[0] < A[1],A[2],A[3]
+A = [a4,a1,a2,a3]
+```
+
+**PROVE:**We suppose loop invariant is 
+
+$$A[j-1] \leq A[j],A[j+1],....,A[n-1]$$
+
+**Initialization:**j is len(A)-1.If A[j]<A[j-1],we swap two elements,get $A[j-1] \leq A[j]$.If not,we still have loop invariant correct.
+
+**Maintenance**:Before iteration,we M=memorize A[j] as temp,and we will have:
+
+$$temp = A[j] \leq A[j+1],....,A[n-1]$$
+
+If A[j]<A[j-1],we swap two elements,and get $A[j-1] \leq A[j],temp = A[j-1]$.So it's easy to conclude that:
+
+$$A[j-1] \leq A[j],A[j+1],....,A[n-1]$$
+
+If not, we get $A[j-1] \leq A[j] \leq A[j+1],...A[n-1]$.So we can also conclude that:
+
+$$A[j-1] \leq A[j],A[j+1],....,A[n-1]$$
+
+**Termination:** when j is i+1,we will get:
+
+$$A[i] \leq A[i+1],A[i+2],....,A[n-1]$$
+
+**PROVEMENT ENDS**
+
+**c.** Using the termination condition of the loop invariant proved in part (b), state
+a loop invariant for the for loop in lines 1–4 that will allow you to prove inequality (2.3). Your proof should use the structure of the loop invariant proof
+presented in this chapter. 
+
+**THINKING:** It's easy to get a condition:
+
+$$A[0] \leq A[1] \leq ...\leq A[i]$$
+
+But these condition can't hold correctness itself,so we use the result of part(b):
+
+$$A[i] \leq A[i+1],A[i+2],....,A[n-1]$$
+
+**PROVE:**We suppose Loop invariant is
+
+$$A[0] \leq A[1] \leq ...\leq A[i] \leq A[i+1],A[i+2],....,A[n-1]$$
+
+**Initialization:** i = 0,with the help of part(b),we can get:
+
+$$A[0]  \leq A[1],A[2],....,A[n-1]$$
+
+**Maintenance:**Before iteration,we have:
+
+$$A[0] \leq A[1] \leq ...\leq A[i-1] \leq A[i],A[i+1],....,A[n-1]$$
+
+After iteration,we can have:
+
+$$A[0] \leq A[1] \leq ...\leq A[i-1] \leq A[i] \leq A[i+1],....,A[n-1]$$
+
+**Termination:** We can get a sorted array:
+
+$$A[0] \leq A[1] \leq A[2] ..... \leq A[n-1]$$
+
+**PROVEMENT ENDS**
 
 ### REFERENCES
 
