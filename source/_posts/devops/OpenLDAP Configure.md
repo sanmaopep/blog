@@ -1,5 +1,5 @@
 ---
-titile: OpenLDAP配置用户集中认证
+title: OpenLDAP配置用户集中认证
 categories: devops
 ---
 
@@ -17,6 +17,8 @@ categories: devops
 - Client/server模型，Server 用于存储数据，Client提供操作目录信息树的工具
 - 这些工具可以将数据库的内容以文本格式（LDAP 数据交换格式，LDIF）呈现在您的面前
 - LDAP是一种开放Internet标准，LDAP协议是跨平台的Interent协议
+
+<!--more-->
 
 ### LDAP 组织数据的方式
 
