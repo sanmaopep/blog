@@ -225,6 +225,16 @@ P.S.下面出现的测试服务器地址为：10.10.101.29，端口为默认的3
 
 接下来就可以通过LDAP设置的uid和userPassword进行登录这个账号了。
 
+### Jenkins中进行配置
+
+在系统管理中选择Configure Global Security，选择LDAP访问控制，输入以下内容（要点击Advanced Server Configuration配置BDN等信息）
+
+![](openldap-configure/jenkins add ldap.png)
+
+通过下面的Test LDAP settings可以进行测试：
+
+![](openldap-configure/jenkins test.png)
+
 ## 参考文献
 
 https://www.itzgeek.com/how-tos/linux/centos-how-tos/step-step-openldap-server-configuration-centos-7-rhel-7.html
