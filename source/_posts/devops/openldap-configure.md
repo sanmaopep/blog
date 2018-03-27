@@ -202,13 +202,13 @@ P.S.下面出现的测试服务器地址为：10.10.101.29，端口为默认的3
 
 用命令的方式效率低下，可以用[LDAP Admin软件](http://www.ldapadmin.org/)进行可视化管理。
 
-![](OpenLDAP Configure/ldap admin.png)
+![](openldap-configure/ldap admin.png)
 
-![](OpenLDAP Configure/add user.png)
+![](openldap-configure/add user.png)
 
 可以看到添加的用户信息如下（注意添加userPassword属性，可以通过前面的命令进行生成）：
 
-![](OpenLDAP Configure/ldap user.png)
+![](openldap-configure/ldap user.png)
 
 
 ## LDAP与其它工具的连接
@@ -217,11 +217,11 @@ P.S.下面出现的测试服务器地址为：10.10.101.29，端口为默认的3
 
 在管理，认证模式中添加如下信息：
 
-![](OpenLDAP Configure/add ldap.png)
+![](openldap-configure/add ldap.png)
 
 点击管理>用户，新建用户，可以将新建的用户通过LDAP添加：
 
-![](OpenLDAP Configure/user.png)
+![](openldap-configure/user.png)
 
 接下来就可以通过LDAP设置的uid和userPassword进行登录这个账号了。
 
