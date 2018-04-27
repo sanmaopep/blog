@@ -113,6 +113,8 @@ dn: <识别名>
 
 ## 安装
 
+备注：以下环境皆为Centos7。
+
 ```shell
 yum install -y openldap openldap-servers openldap-clients
 service slapd start
@@ -196,20 +198,19 @@ ldapadd -x -W -D "cn=admin,dc=my-domain,dc=com" -f base.ldif
 ldapsearch -x -b 'dc=my-domain,dc=com' '(objectClass=*)'
 ```
 
-## 添加用户
-
-P.S.下面出现的测试服务器地址为：10.10.101.29，端口为默认的389，BDN为dc=my-domain,dc=com
+## LDAP Admin
 
 用命令的方式效率低下，可以用[LDAP Admin软件](http://www.ldapadmin.org/)进行可视化管理。
 
 ![](openldap-configure/ldap admin.png)
 
+连接成功之后我们可以添加我们想要的Entry：
+
 ![](openldap-configure/add user.png)
 
-可以看到添加的用户信息如下（注意添加userPassword属性，可以通过前面的命令进行生成）：
+我们可以添加一个用户，添加的用户信息如下（**注意添加userPassword属性,可以用过右键的setPassword进行设定**）：
 
 ![](openldap-configure/ldap user.png)
-
 
 ## LDAP与其它工具的连接
 
@@ -251,4 +252,4 @@ http://www.pfeng.org/archives/564
 
 http://www.pfeng.org/archives/580
 
-
+https://www.server-world.info/en/note?os=CentOS_7&p=openldap&f=7
